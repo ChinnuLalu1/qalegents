@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/Users/Chinnu Lalu/IdeaProjects/qalegent">
+        <classes>
+            <class name="org.qalegent.test.AddUsersPageTest">
+                <methods>
+                    <include name="verifyAddUserPageTitle"/>
+                    <include name="verifyAddUser"/>
+                    <include name="verifyUserLoginWithNewAddUser"/>
+                </methods>
+            </class>
+            <class name="org.qalegent.test.HomePageTest">
+                <methods>
+                    <include name="verifyHomePageTitle"/>
+                    <include name="verifyUserLoginDate"/>
+                </methods>
+            </class>
+            <class name="org.qalegent.test.LoginPageTest">
+                <methods>
+                    <include name="verifyLoginPageTitle"/>
+                    <include name="verifyUserLoginWithValidCredentials"/>
+                    <include name="verifyErrorMessageWhileLoginWithInvalidCredential"/>
+                </methods>
+            </class>
+            <class name="org.qalegent.test.ResetPagetest">
+                <methods>
+                    <include name="verifyResetPageTitle"/>
+                    <include name="verifyErrorMessageWithInvalidEmailId"/>
+                </methods>
+            </class>
+            <class name="org.qalegent.test.UserManagementTest">
+                <methods>
+                    <include name="verifyUserManagementOptions"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

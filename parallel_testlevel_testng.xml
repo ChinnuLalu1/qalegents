@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Functional Suite">
+    <test name="LoginPageTest">
+        <classes>
+            <class name="org.qalegent.test.LoginPageTest"/>
+        </classes>
+    </test>
+    <test name="HomePageTest">
+        <classes>
+            <class name="org.qalegent.test.HomePageTest"/>
+        </classes>
+    </test>
+    <test name="ResetPageTest">
+        <classes>
+            <class name="org.qalegent.test.ResetPagetest"/>
+        </classes>
+    </test>
+    <test name="AddUsersPageTest">
+        <classes>
+            <class name="org.qalegent.test.AddUsersPageTest"/>
+        </classes>
+    </test>
+    <test name="UserManagementTest">
+        <classes>
+            <class name="org.qalegent.test.UserManagementTest"/>
+        </classes>
+    </test>
+</suite>

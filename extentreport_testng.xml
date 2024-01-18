@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Functional Suite">
+    <listeners>
+        <listener class-name="org.qalegent.listeners.ExtentListeners"/>
+    </listeners>
+    <test  name="All Test Cases">
+        <classes>
+            <class name="org.qalegent.test.LoginPageTest"/>
+            <class name="org.qalegent.test.ResetPagetest"/>
+            <class name="org.qalegent.test.HomePageTest"/>
+            <class name="org.qalegent.test.AddUsersPageTest"/>
+            <class name="org.qalegent.test.UserManagementTest"/>
+        </classes>
+    </test>
+</suite>

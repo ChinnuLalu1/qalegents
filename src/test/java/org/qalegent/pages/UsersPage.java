@@ -12,7 +12,7 @@ public class UsersPage {
         this.driver=driver;
         PageFactory.initElements(driver,this);
     }
-    @FindBy(xpath = "//a[@class='btn btn-block btn-primary']")
+    @FindBy(xpath = "//a[contains(@class,'btn btn-block btn-primary')]")
     WebElement addButton;
 
     @FindBy(xpath = "//input[@class='form-control input-sm']")
@@ -21,8 +21,14 @@ public class UsersPage {
     @FindBy(xpath = "//tr[@class='odd']//td[text()='ammu@gmail.com']")
     WebElement addedUserEmailField;
 
-    @FindBy(id = "email")
-    WebElement newUseremail;
+    @FindBy(xpath = "//table//tr[1]//td[4]")
+    WebElement newUserEmail;
+
+    @FindBy(xpath = "//a[@class='dropdown-toggle']//span")
+    WebElement userElement;
+
+    @FindBy(xpath = "//a[@class='btn btn-default btn-flat' and text()='Sign Out']")
+    WebElement signOutButton;
 
     public String getPageTitle(){
         return driver.getTitle();
@@ -38,7 +44,15 @@ public class UsersPage {
         return WebElementUtility.getTextFromElement(addedUserEmailField);
     }
     public String getUserEmailId(){
-        return WebElementUtility.getTextFromElement(newUseremail);
-    }
 
+        return WebElementUtility.getTextFromElement(newUserEmail);
+    }
+    public void clickOnUserProfile(){
+        WebElementUtility.scrollAndClick(driver,userElement);
+        //WebElementUtility.clickOnElement(userElement);
+    }
+    public LoginPage clickOnSignOut(){
+        WebElementUtility.clickOnElement(signOutButton);
+        return new LoginPage(driver);
+    }
 }

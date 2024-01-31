@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.selenium.qalegent.utilities.WebDriverUtility;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -14,6 +15,7 @@ import org.testng.annotations.Parameters;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
 
 public class Base {
     public WebDriver driver;
@@ -36,10 +38,11 @@ public class Base {
         driver.close();
     }*/
     @BeforeMethod(alwaysRun = true)
-    @Parameters({"browser","baseurl"})
-    public void setUp(){
-        initializeBrowser("Chrome");
-        driver.get("https://qalegend.com/billing/public/login");
+    @Parameters("browser")
+    public void setUp(String browserName){
+        initializeBrowser(browserName);
+        WebDriverUtility.loadUrl(driver,"https://qalegend.com/billing/public/login");
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
     @AfterMethod(alwaysRun = true)
     public void tearDown(ITestResult result) throws IOException {

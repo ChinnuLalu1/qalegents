@@ -1,6 +1,6 @@
-package org.selenium.qalegent.constance;
+package org.selenium.qalegent.constants;
 
-public class Constance {
+public class Constants {
     public static final String TEST_DATA_EXCEL_PATH = "\\src\\main\\resources\\TestData.xlsx";
     public static final String HOME_DIRECTORY = System.getProperty("user.dir");
     public static final String LOGIN_PAGE ="LoginPage";

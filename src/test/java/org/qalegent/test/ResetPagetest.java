@@ -3,8 +3,8 @@ package org.qalegent.test;
 import org.qalegent.automatiocore.Base;
 import org.qalegent.pages.LoginPage;
 import org.qalegent.pages.ResetPage;
-import org.selenium.qalegent.constance.Constance;
-import org.selenium.qalegent.constance.Messages;
+import org.selenium.qalegent.constants.Constants;
+import org.selenium.qalegent.constants.Messages;
 import org.selenium.qalegent.utilities.ExcelUtility;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -17,7 +17,7 @@ public class ResetPagetest extends Base {
         LoginPage login =new LoginPage(driver);
         ResetPage reset = login.clickOnForgetPassword();
         String actualPageTitle=reset.getPageTitle();
-        ArrayList<String> data = ExcelUtility.readData(Constance.TEST_DATA_EXCEL_PATH,Constance.RESET_PAGE);
+        ArrayList<String> data = ExcelUtility.readData(Constants.TEST_DATA_EXCEL_PATH, Constants.RESET_PAGE);
         String expectedPageTitle = data.get(0);
         Assert.assertEquals(actualPageTitle,expectedPageTitle, Messages.TITLE_MISMATCH);
 
@@ -26,7 +26,7 @@ public class ResetPagetest extends Base {
     public void verifyErrorMessageWithInvalidEmailId(){
         LoginPage login =new LoginPage(driver);
         ResetPage reset = login.clickOnForgetPassword();
-        ArrayList<String> data = ExcelUtility.readData(Constance.TEST_DATA_EXCEL_PATH, Constance.RESET_PAGE);
+        ArrayList<String> data = ExcelUtility.readData(Constants.TEST_DATA_EXCEL_PATH, Constants.RESET_PAGE);
         String email = data.get(1);
         reset.enterEmail(email);
         reset.clickOnPasswordResetLink();

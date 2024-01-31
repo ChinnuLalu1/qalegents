@@ -1,4 +1,4 @@
-package org.selenium.qalegent.constance;
+package org.selenium.qalegent.constants;
 
 public class Messages {
     public static final String TITLE_MISMATCH = "Invalid Title";

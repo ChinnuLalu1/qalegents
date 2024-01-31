@@ -5,8 +5,8 @@ import org.qalegent.automatiocore.Base;
 import org.qalegent.listeners.RetryAnalyzer;
 import org.qalegent.pages.HomePage;
 import org.qalegent.pages.LoginPage;
-import org.selenium.qalegent.constance.Constance;
-import org.selenium.qalegent.constance.Messages;
+import org.selenium.qalegent.constants.Constants;
+import org.selenium.qalegent.constants.Messages;
 import org.selenium.qalegent.utilities.ExcelUtility;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -16,21 +16,21 @@ public class HomePageTest extends Base {
     @Test(groups = {"Sanity"})
     public void verifyHomePageTitle(){
         LoginPage login = new LoginPage(driver);
-        ArrayList<String> data = ExcelUtility.readData(Constance.TEST_DATA_EXCEL_PATH,Constance.LOGIN_PAGE);
+        ArrayList<String> data = ExcelUtility.readData(Constants.TEST_DATA_EXCEL_PATH, Constants.LOGIN_PAGE);
         String userName = data.get(1);
         login.enterUserName(userName);
         String password = data.get(2);
         login.enterPassword(password);
         HomePage home = login.clickOnLogin();
         String actualPageTitle = home.getPageTitle();
-        ArrayList<String> messageData = ExcelUtility.readData(Constance.TEST_DATA_EXCEL_PATH,Constance.HOME_PAGE);
+        ArrayList<String> messageData = ExcelUtility.readData(Constants.TEST_DATA_EXCEL_PATH, Constants.HOME_PAGE);
         String expectedPageTitle = messageData.get(0);
         Assert.assertEquals(actualPageTitle,expectedPageTitle, Messages.TITLE_MISMATCH);
     }
     @Test(groups = {"Regression"},retryAnalyzer = RetryAnalyzer.class)
     public void verifyUserLoginDate(){
         LoginPage login = new LoginPage(driver);
-        ArrayList<String> data = ExcelUtility.readData(Constance.TEST_DATA_EXCEL_PATH, Constance.LOGIN_PAGE);
+        ArrayList<String> data = ExcelUtility.readData(Constants.TEST_DATA_EXCEL_PATH, Constants.LOGIN_PAGE);
         String userName = data.get(1);
         login.enterUserName(userName);
         String password = data.get(2);

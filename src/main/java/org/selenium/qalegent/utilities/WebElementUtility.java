@@ -1,5 +1,7 @@
 package org.selenium.qalegent.utilities;
 
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class WebElementUtility {
@@ -14,6 +16,7 @@ public class WebElementUtility {
         element.sendKeys(valueToEnter);
     }
     public static String getTextFromElement(WebElement element){
+
         return element.getText();
     }
     public static boolean isElementDisplayed(WebElement element){
@@ -32,5 +35,23 @@ public class WebElementUtility {
     }
     public static void enterEmailId(WebElement element, String valueToEnter){
        element.sendKeys(valueToEnter);
+    }
+    public static boolean isClicked(WebElement element){
+        try {
+           element.click();
+           return true;
+        }
+        catch(Exception e){
+            return false;
+        }
+    }
+    public static void scrollAndClick(WebDriver driver,WebElement element){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        int x=0;
+
+        while(!isClicked(element)){
+            js.executeScript("window.scrollBy(0,"+x+")");
+            x=x+2;
+        }
     }
 }

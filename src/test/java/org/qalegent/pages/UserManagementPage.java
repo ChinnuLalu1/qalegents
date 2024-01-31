@@ -36,11 +36,12 @@ public class UserManagementPage {
     }
     public UsersPage clickOnUsersOption(){
         if (userOptionField.isDisplayed() && userOptionField.isEnabled()) {
-            WebElementUtility.clickOnElement(userOptionField);
+
         }else  {
             // Handle the case where the element is not intractable
         }
         WaitUtility.pageLoadwait(driver,10);
+        WebElementUtility.clickOnElement(userOptionField);
         return new UsersPage(driver);
     }
 

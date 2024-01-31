@@ -4,7 +4,7 @@ import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.selenium.qalegent.constance.Constance;
+import org.selenium.qalegent.constants.Constants;
 
 import java.io.FileInputStream;
 import java.util.ArrayList;
@@ -18,7 +18,7 @@ public class ExcelUtility {
     public static ArrayList<String> readData(String file_path, String sheet) {
         try {
             DataFormatter formatter = new DataFormatter();
-            String path = Constance.HOME_DIRECTORY + file_path;
+            String path = Constants.HOME_DIRECTORY + file_path;
             file = new FileInputStream(path);
             wb = new XSSFWorkbook(file);
             sh = wb.getSheet(sheet);

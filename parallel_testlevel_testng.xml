@@ -1,28 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Functional Suite">
-    <test name="LoginPageTest">
-        <classes>
-            <class name="org.qalegent.test.LoginPageTest"/>
-        </classes>
-    </test>
-    <test name="HomePageTest">
-        <classes>
-            <class name="org.qalegent.test.HomePageTest"/>
-        </classes>
-    </test>
-    <test name="ResetPageTest">
-        <classes>
-            <class name="org.qalegent.test.ResetPagetest"/>
-        </classes>
-    </test>
-    <test name="AddUsersPageTest">
+<suite name="All Test Suite" parallel="tests" thread-count="2">
+    <test name="Smoke Test">
+        <parameter name="browser" value="Chrome"/>
         <classes>
             <class name="org.qalegent.test.AddUsersPageTest"/>
         </classes>
     </test>
-    <test name="UserManagementTest">
+    <test name="Regression Test">
+        <parameter name="browser" value="Chrome"/>
         <classes>
+            <class name="org.qalegent.test.HomePageTest"/>
+            <class name="org.qalegent.test.LoginPageTest"/>
+        </classes>
+    </test>
+    <test name="Sanity Test">
+        <parameter name="browser" value="Chrome"/>
+        <classes>
+            <class name="org.qalegent.test.ResetPagetest"/>
             <class name="org.qalegent.test.UserManagementTest"/>
         </classes>
     </test>

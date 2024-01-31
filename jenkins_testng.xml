@@ -6,6 +6,7 @@
         <listener class-name="org.qalegent.listeners.ExtentListeners"/>
     </listeners>
     <test  name="Functional Test">
+        <parameter name="browser" value="Chrome"/>
         <classes>
             <class name="org.qalegent.test.HomePageTest"/>
         </classes>

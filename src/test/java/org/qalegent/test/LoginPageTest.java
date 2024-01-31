@@ -4,8 +4,8 @@ import org.qalegent.automatiocore.Base;
 import org.qalegent.dataprovider.DataProviders;
 import org.qalegent.pages.HomePage;
 import org.qalegent.pages.LoginPage;
-import org.selenium.qalegent.constance.Constance;
-import org.selenium.qalegent.constance.Messages;
+import org.selenium.qalegent.constants.Constants;
+import org.selenium.qalegent.constants.Messages;
 import org.selenium.qalegent.utilities.ExcelUtility;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -17,14 +17,14 @@ public class LoginPageTest extends Base {
     public void verifyLoginPageTitle(){
         LoginPage login=new LoginPage(driver);
         String actualPageTitle=login.getPageTitle();
-        ArrayList <String> data = ExcelUtility.readData(Constance.TEST_DATA_EXCEL_PATH,Constance.LOGIN_PAGE);
+        ArrayList <String> data = ExcelUtility.readData(Constants.TEST_DATA_EXCEL_PATH, Constants.LOGIN_PAGE);
         String expectedPageTitle = data.get(0);
         Assert.assertEquals(actualPageTitle,expectedPageTitle, Messages.TITLE_MISMATCH);
     }
     @Test(groups = {"Smoke"})
     public void verifyUserLoginWithValidCredentials(){
         LoginPage login = new LoginPage(driver);
-        ArrayList<String> data = ExcelUtility.readData(Constance.TEST_DATA_EXCEL_PATH,Constance.LOGIN_PAGE);
+        ArrayList<String> data = ExcelUtility.readData(Constants.TEST_DATA_EXCEL_PATH, Constants.LOGIN_PAGE);
         String userName = data.get(1);
         login.enterUserName(userName);
         String password = data.get(2);
@@ -38,7 +38,7 @@ public class LoginPageTest extends Base {
         login.enterPassword(password);
         login.clickOnLogin();
         String actualLoginErrorMessage = login.getText();
-        ArrayList<String> data = ExcelUtility.readData(Constance.TEST_DATA_EXCEL_PATH,Constance.LOGIN_PAGE);
+        ArrayList<String> data = ExcelUtility.readData(Constants.TEST_DATA_EXCEL_PATH, Constants.LOGIN_PAGE);
         String expectedLoginErrorMessage = data.get(3);
         Assert.assertEquals(actualLoginErrorMessage,expectedLoginErrorMessage,Messages.LOGIN_FAILED);
     }

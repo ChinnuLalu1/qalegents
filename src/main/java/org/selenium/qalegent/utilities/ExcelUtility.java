@@ -1,5 +1,6 @@
 package org.selenium.qalegent.utilities;
 
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -7,6 +8,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.selenium.qalegent.constants.Constants;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ExcelUtility {
@@ -35,5 +38,22 @@ public class ExcelUtility {
         } catch (Exception e) {
             throw new RuntimeException("Test data excel sheet not found");
         }
+    }
+    public static String readStringData(int i,int j,String sheet) throws IOException {
+        file = new FileInputStream("C:\\Users\\Chinnu Lalu\\IdeaProjects\\qalegent\\src\\main\\resources\\TestData.xlsx");
+        wb = new XSSFWorkbook(file);
+        sh = wb.getSheet(sheet);
+        Row row = sh.getRow(i);
+        Cell cell = row.getCell(j);
+        return cell.getStringCellValue();
+    }
+    public static String readIntegerData(int i,int j,String sheet) throws IOException {
+        file = new FileInputStream("C:\\Users\\Chinnu Lalu\\IdeaProjects\\qalegent\\src\\main\\resources\\TestData.xlsx");
+        wb = new XSSFWorkbook(file);
+        sh = wb.getSheet(sheet);
+        Row row = sh.getRow(i);
+        Cell cell = row.getCell(j);
+        int x = (int) cell.getNumericCellValue();
+        return String.valueOf(x);
     }
 }

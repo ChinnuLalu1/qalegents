@@ -38,6 +38,13 @@ public class LoginPage {
         WebElementUtility.enterValue(passwordField,password);
     }
     public HomePage clickOnLogin(){
+        //WebElementUtility.clickOnElement(loginButton);
+        loginButton.click();
+        return new HomePage(driver);
+    }
+    public HomePage login(String useName,String password){
+        WebElementUtility.enterValue(userNameField,useName);
+        WebElementUtility.enterValue(passwordField,password);
         WebElementUtility.clickOnElement(loginButton);
         return new HomePage(driver);
     }

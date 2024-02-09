@@ -9,6 +9,7 @@ import org.selenium.qalegent.utilities.RandomDataUtility;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class AddUsersPageTest extends Base {
@@ -32,18 +33,20 @@ public class AddUsersPageTest extends Base {
         Assert.assertEquals(actualAddUserPageTitle,expectedAdduserPageTitle, Messages.TITLE_MISMATCH);
     }
     @Test(groups = {"Smoke"})
-    public void verifyAddUser(){
+    public void verifyAddUser() throws IOException {
         String firstName = RandomDataUtility.getFirstName();
         String lastName  = RandomDataUtility.getLastName();
         String emailId =firstName + "." + lastName + "12@yahoo.com";
         String password =firstName +"." +lastName;
         LoginPage login = new LoginPage(driver);
-        ArrayList<String> data = ExcelUtility.readData(Constants.TEST_DATA_EXCEL_PATH, Constants.LOGIN_PAGE);
-        String loginUserName = data.get(1);
-        login.enterUserName(loginUserName);
-        String loginPassword = data.get(2);
-        login.enterPassword(loginPassword);
-        login.clickOnLogin();
+        //ArrayList<String> data = ExcelUtility.readData(Constants.TEST_DATA_EXCEL_PATH, Constants.LOGIN_PAGE);
+        //String loginUserName = data.get(1);
+        String loginUserName=ExcelUtility.readStringData(0,1,"LoginPage");
+        //login.enterUserName(loginUserName);
+        //String loginPassword = data.get(2);
+        String loginPassword=ExcelUtility.readIntegerData(0,2,"LoginPage");
+        //login.enterPassword(loginPassword);
+        login.login(loginUserName,loginPassword);
         HomePage home = login.clickOnEndTourButton();
         UserManagementPage userManagement =home.clickOnUserManagement();
         UsersPage userPage = userManagement.clickOnUsersOption();
@@ -90,7 +93,7 @@ public class AddUsersPageTest extends Base {
         newLogin.enterUserName(firstName);
         newLogin.enterPassword(password);
         newLogin.clickOnLogin();
-        HomePage homePage = login.clickOnEndTourButton();
+//        HomePage homePage = login.clickOnEndTourButton();
 //        String actualRegisteredUserPageNameText =homePage.getRegisteredUserPageTitle();
 //        String expectedRegisteredUserPageNameText ="Welcome " + firstName + ",";
 //        Assert.assertEquals(actualRegisteredUserPageNameText,expectedRegisteredUserPageNameText,Messages.USER_LOGIN_FAILED);

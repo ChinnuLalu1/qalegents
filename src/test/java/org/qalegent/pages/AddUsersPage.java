@@ -39,7 +39,8 @@ public class AddUsersPage {
         return driver.getTitle();
     }
     public void enterFirstName(String firstName){
-        WebElementUtility.enterFirstName(firstNameField,firstName);
+        firstNameField.sendKeys(firstName);
+       // WebElementUtility.enterFirstName(firstNameField,firstName);
     }
     public void enterLastName(String lastName){
         WebElementUtility.enterLastName(lastNameField,lastName);

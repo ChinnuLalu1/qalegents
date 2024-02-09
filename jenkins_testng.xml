@@ -9,6 +9,7 @@
         <parameter name="browser" value="Chrome"/>
         <classes>
             <class name="org.qalegent.test.HomePageTest"/>
+            <class name="org.qalegent.test.LoginPageTest"/>
         </classes>
     </test>
 </suite>
